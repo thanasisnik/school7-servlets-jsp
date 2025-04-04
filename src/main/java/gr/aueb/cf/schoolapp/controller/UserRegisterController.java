@@ -5,6 +5,7 @@ import gr.aueb.cf.schoolapp.dao.UserDAOImpl;
 import gr.aueb.cf.schoolapp.exceptions.UserDAOException;
 import gr.aueb.cf.schoolapp.dto.InsertUserDTO;
 import gr.aueb.cf.schoolapp.dto.UserReadOnlyDTO;
+import gr.aueb.cf.schoolapp.mapper.Mapper;
 import gr.aueb.cf.schoolapp.model.User;
 import gr.aueb.cf.schoolapp.service.IUserService;
 import gr.aueb.cf.schoolapp.service.UserServiceImpl;
@@ -73,7 +74,7 @@ public class UserRegisterController extends HttpServlet {
             }
 
             user = userService.insertUser(insertUserDTO);
-            UserReadOnlyDTO readOnlyDTO = mapToReadOnlyDTO(user);
+            UserReadOnlyDTO readOnlyDTO = Mapper.mapToReadOnlyDTO(user);
 
             //request.setAttribute("userInfo", readOnlyDTO);
             HttpSession session = request.getSession();
@@ -89,9 +90,5 @@ public class UserRegisterController extends HttpServlet {
                     .forward(request, response);
         }
 
-    }
-
-    private UserReadOnlyDTO mapToReadOnlyDTO(User user) {
-        return new UserReadOnlyDTO(user.getId(), user.getUsername(), user.getPassword());
     }
 }
