@@ -24,7 +24,7 @@
                     <div style="color: red;">${error}</div>
                 </div>
                 <div class=container>
-                    <c:if test="${requestScope.isErrror == 'true'}">
+                    <c:if test="${requestScope.isError == 'true'}">
                         <p style="color: red">Login Error</p>
                     </c:if>
                 </div>

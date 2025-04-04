@@ -16,7 +16,7 @@
 <div class="main-content">
 
     <div class="form m-bottom">
-<%--        <form method="POST" action="${pageContext.request.contextPath}/users/register">--%>
+<%--        <form method="POST" action="${pageContext.request.contextPath}/register">--%>
             <form method="POST" action="">
             <div class="row m-bottom">
                 <input class="m-bottom" type="email" name="username" value="${requestScope.userRegisterDTO.username}" required placeholder="Username">
