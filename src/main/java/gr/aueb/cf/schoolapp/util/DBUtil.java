@@ -11,7 +11,7 @@ public class DBUtil {
 	private static Connection connection;
 	
 	static {
-		ds.setUrl("jdbc:mysql://localhost:3306/schooldb7staging?serverTimeZone=UTC");
+		ds.setUrl("jdbc:mysql://localhost:3306/school7dbstaging?serverTimeZone=UTC");
 		ds.setUsername("user7");
 
 		//ds.setPassword(System.getenv("PASS_USER7")); need to set env variable
