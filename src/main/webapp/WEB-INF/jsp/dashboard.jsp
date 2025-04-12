@@ -16,12 +16,13 @@
 </head>
 <body>
 
+    <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
-        <div>
+        <div class="container mx-auto min-h-screen">
             <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />">Προβολή Καθηγητών</a>
         </div>
 
-
+    <%@ include file="/WEB-INF/jsp/footer.jsp" %>
 
 </body>
 </html>

@@ -11,7 +11,7 @@
 
 
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col">
 
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
