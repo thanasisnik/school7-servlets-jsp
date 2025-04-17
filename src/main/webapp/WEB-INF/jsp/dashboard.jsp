@@ -17,10 +17,8 @@
 <body>
 
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
+    <%@ include file="/WEB-INF/jsp/dashboard-navbar.jsp" %>
 
-        <div class="container mx-auto min-h-screen">
-            <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />">Προβολή Καθηγητών</a>
-        </div>
 
     <%@ include file="/WEB-INF/jsp/footer.jsp" %>
 

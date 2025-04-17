@@ -11,18 +11,23 @@
     <meta charset="UTF-8">
     <title>Επιτυχής Εισαγωγή</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/success.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
-<div class="success m-bottom">
-    <h1>Επιτυχής Ενημέρωση</h1>
-    <p>Κωδικός: ${sessionScope.teacherInfo.id}</p>
-    <p>Όνομα: ${sessionScope.teacherInfo.firstname}</p>
-    <p>Επώνυμο: ${sessionScope.teacherInfo.lastname}</p>
+<div class="max-w-xl mx-auto mt-20 p-10 bg-white shadow-lg rounded-xl border border-green-200">
+    <h1 class="text-2xl font-bold text-green-700 mb-5">✅ Επιτυχής Ενημέρωση</h1>
+    <div class="space-y-2 text-gray-700">
+        <p><span class="font-medium">Κωδικός:</span> ${sessionScope.teacherInfo.id}</p>
+        <p><span class="font-medium">Όνομα:</span> ${sessionScope.teacherInfo.firstname}</p>
+        <p><span class="font-medium">Επώνυμο:</span> ${sessionScope.teacherInfo.lastname}</p>
+    </div>
 </div>
 
 <div>
-    <a href="${pageContext.request.contextPath}/school-app/teachers/view">Επιστροφή</a>
+    <a href="${pageContext.request.contextPath}/school-app/teachers/view"
+    class="inline-block px-5 py-2 bg-blue-700 hover:bg-blue-900 text-white font-semibold rounded-lg transition duration-200"
+    >Επιστροφή στον Πίνακα Ελέγχου</a>
 </div>
 </body>
 </html>
