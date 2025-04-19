@@ -83,7 +83,7 @@ public class TeacherDAOImpl implements ITeacherDAO {
             // logging
             return updatedTeacher;
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             // logging
             throw new TeacherDAOException("SQL error in update teacher with vat: " + teacher.getVat());
         }
