@@ -149,4 +149,62 @@ public class StudentDAOImpl implements IStudentDAO{
         }
         return students;
     }
+
+    @Override
+    public List<Student> getByLastname(String lastname) throws StudentDAOException {
+        List<Student> students = new ArrayList<>();
+        Student student;
+        String sql = "SELECT * FROM students WHERE lastname LIKE ?";
+        ResultSet rs;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, lastname + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                student = new Student(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
+                        rs.getString("fathername"), rs.getString("phone_num"), rs.getString("email"), rs.getString("street"),
+                        rs.getString("street_num"), rs.getString("zipcode"), rs.getInt("city_id"), rs.getString("uuid"),
+                        rs.getTimestamp("created_at").toLocalDateTime(), rs.getTimestamp("updated_at").toLocalDateTime());
+                students.add(student);
+            }
+            return students;
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            // logging
+            throw new StudentDAOException("SQL error in get with lastname: " + lastname);
+        }
+    }
+
+    @Override
+    public List<Student> getFilteredStudents(String firstname, String lastname) throws StudentDAOException {
+        String sql = "SELECT * FROM students WHERE firstname LIKE ? AND lastname LIKE ?";
+        List<Student> students = new ArrayList<>(); // isEmpty == true
+        ResultSet rs;
+        Student student;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, firstname + "%");
+            ps.setString(2, lastname + "%");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                student = new Student(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
+                         rs.getString("fathername"), rs.getString("phone_num"), rs.getString("email"),
+                        rs.getString("street"), rs.getString("street_num"), rs.getString("zipcode"), rs.getInt("city_id"),
+                        rs.getString("uuid"), rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime());
+                students.add(student);
+            }
+            // Logging
+            students.forEach(System.out::println);
+            return students;
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            // logging
+            throw new StudentDAOException("SQL error in filtered get");
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package gr.aueb.cf.schoolapp.dao;
 
 import gr.aueb.cf.schoolapp.exceptions.StudentDAOException;
+
 import gr.aueb.cf.schoolapp.model.Student;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public interface IStudentDAO {
     Student getById(Integer id) throws StudentDAOException;
     List<Student> getAll() throws StudentDAOException;
 
+    List<Student> getByLastname(String lastname) throws StudentDAOException;
+    List<Student> getFilteredStudents(String firstname, String lastname) throws StudentDAOException;
 
 }
