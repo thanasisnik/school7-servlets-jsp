@@ -151,6 +151,43 @@ public class StudentDAOImpl implements IStudentDAO{
     }
 
     @Override
+    public Student getStudentByEmail(String email) throws StudentDAOException {
+        String sql = "SELECT * FROM students WHERE email = ? ";
+        Student student = null;
+        ResultSet rs;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                student = new Student(
+                        rs.getInt("id"),
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getString("fathername"),
+                        rs.getString("phone_num"),
+                        rs.getString("email"),
+                        rs.getString("street"),
+                        rs.getString("street_num"),
+                        rs.getString("zipcode"),
+                        rs.getInt("city_id"),
+                        rs.getString("uuid"),
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime()
+                );
+            }
+
+            return student;
+        } catch (SQLException e) {
+            throw new StudentDAOException("SQL error in get by email: " + email);
+        }
+
+    }
+
+    @Override
     public List<Student> getByLastname(String lastname) throws StudentDAOException {
         List<Student> students = new ArrayList<>();
         Student student;

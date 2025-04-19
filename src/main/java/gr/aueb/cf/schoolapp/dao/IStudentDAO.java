@@ -14,6 +14,7 @@ public interface IStudentDAO {
     Student getById(Integer id) throws StudentDAOException;
     List<Student> getAll() throws StudentDAOException;
 
+    Student getStudentByEmail(String email) throws StudentDAOException;
     List<Student> getByLastname(String lastname) throws StudentDAOException;
     List<Student> getFilteredStudents(String firstname, String lastname) throws StudentDAOException;
 
