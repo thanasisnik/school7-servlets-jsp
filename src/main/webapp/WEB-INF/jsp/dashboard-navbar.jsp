@@ -35,9 +35,9 @@
            Εισαγωγή Καθηγητών
         </a>
 
-        <a href="#"
+        <a href="<c:url value='${pageContext.request.contextPath}/school-app/students/view' />"
            class="block text-white hover:text-gray-300 font-medium transition-colors duration-200">
-          Επεξεργασία Καθηγητών
+          Προβολή Μαθητών
         </a>
 
         <a href="#"

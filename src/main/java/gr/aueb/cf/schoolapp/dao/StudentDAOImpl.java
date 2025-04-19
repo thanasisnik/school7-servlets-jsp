@@ -17,8 +17,8 @@ public class StudentDAOImpl implements IStudentDAO{
 
     @Override
     public Student insert(Student student) throws StudentDAOException {
-        String sql = "INSERT INTO students (firstname, lastname, fathername, phone_num,)" +
-                "email, street, street_num, zipcode, city_id, uuid, created_at, updated_at" +
+        String sql = "INSERT INTO students (firstname, lastname, fathername, phone_num, " +
+                "email, street, street_num, zipcode, city_id, uuid, created_at, updated_at) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Student insertedStudent = null;
@@ -239,7 +239,7 @@ public class StudentDAOImpl implements IStudentDAO{
             students.forEach(System.out::println);
             return students;
         } catch (SQLException e) {
-            // e.printStackTrace();
+             e.printStackTrace();
             // logging
             throw new StudentDAOException("SQL error in filtered get");
         }
