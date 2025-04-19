@@ -8,9 +8,9 @@ public class StudentReadOnlyDTO extends BaseStudentDTO {
 
     }
 
-    public StudentReadOnlyDTO(String firstname, String lastname, String fatherName,
+    public StudentReadOnlyDTO( Integer id, String uuid, String firstname, String lastname, String fatherName,
                               String phoneNum, String email, String street, String streetNum,
-                              String zipCode, Integer cityId, Integer id, String uuid) {
+                              String zipCode, Integer cityId) {
         super(firstname, lastname, fatherName, phoneNum, email, street, streetNum, zipCode, cityId);
         this.id = id;
         this.uuid = uuid;
