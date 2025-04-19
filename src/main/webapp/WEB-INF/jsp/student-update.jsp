@@ -33,7 +33,7 @@
 
             <div class="flex justify-between gap-8 m-bottom">
 
-                <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="fathername" value="${requestScope.updateDTO.fatherName}" placeholder="Επώνυμο Πατρός">
+                <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="fatherName" value="${requestScope.updateDTO.fatherName}" placeholder="Επώνυμο Πατρός">
                 <p class="validation-error">${sessionScope.fathernameMessage}</p>
             </div>
 
@@ -52,7 +52,7 @@
             </div>
 
             <div class="flex justify-between gap-8 row m-bottom">
-                <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="zipcode" value="${requestScope.updateDTO.zipCode}" placeholder="ΤΚ">
+                <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="zipCode" value="${requestScope.updateDTO.zipCode}" placeholder="ΤΚ">
                 <p class="validation-error">${sessionScope.zipcodeMessage}</p>
 
             <!-- City Dropdown -->

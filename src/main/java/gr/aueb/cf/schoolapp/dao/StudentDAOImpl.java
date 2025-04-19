@@ -69,15 +69,16 @@ public class StudentDAOImpl implements IStudentDAO{
             ps.setString(7, student.getStreetNum());
             ps.setString(8, student.getZipCode());
             ps.setInt(9, student.getCityId());
-            ps.setTimestamp(11, Timestamp.valueOf(LocalDateTime.now()));
-            ps.setInt(12, student.getId());
+            ps.setTimestamp(10, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setInt(11, student.getId());
 
             ps.executeUpdate();
             updatedStudent = getById(student.getId());
 
             return updatedStudent;
         } catch (SQLException e) {
-            throw new StudentDAOException("SQL error in update student with email: " + student.getEmail());
+            throw new StudentDAOException("SQL error updating student ID " + student.getId() +
+                    ". Error: " + e.getMessage());
 
         }
     }

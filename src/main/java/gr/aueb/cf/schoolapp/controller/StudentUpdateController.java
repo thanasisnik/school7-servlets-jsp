@@ -86,12 +86,12 @@ public class StudentUpdateController extends HttpServlet {
         Integer id = Integer.parseInt(idStr);
         String firstname = (req.getParameter("firstname") != null) ? req.getParameter("firstname").trim() : "";
         String lastname = (req.getParameter("lastname") != null) ? req.getParameter("lastname").trim() : "";
-        String fathername = (req.getParameter("fathername") != null) ? req.getParameter("fathername").trim() : "";
+        String fathername = (req.getParameter("fatherName") != null) ? req.getParameter("fatherName").trim() : "";
         String phoneNum = (req.getParameter("phoneNum") != null) ? req.getParameter("phoneNum").trim() : "";
         String email = (req.getParameter("email") != null) ? req.getParameter("email").trim() : "";
         String street = (req.getParameter("street") != null) ? req.getParameter("street").trim() : "";
         String streetNum = (req.getParameter("streetNum") != null) ? req.getParameter("streetNum").trim() : "";
-        String zipcode = (req.getParameter("zipcode") != null) ? req.getParameter("zipcode").trim() : "";
+        String zipcode = (req.getParameter("zipCode") != null) ? req.getParameter("zipCode").trim() : "";
         Integer cityId = (req.getParameter("cityId") != null) ? Integer.parseInt(req.getParameter("cityId").trim()) : 0;
         updateDTO = new StudentUpdateDTO(id, firstname, lastname, fathername, phoneNum,
                 email, street, streetNum, zipcode, cityId);
@@ -112,8 +112,7 @@ public class StudentUpdateController extends HttpServlet {
                 req.getSession().setAttribute("fathernameMessage", fathernameMessage);
                 req.getSession().setAttribute("phoneNumMessage", phoneNumMessage);
                 req.getSession().setAttribute("updateDTO", updateDTO);
-//                req.getRequestDispatcher("/WEB-INF/jsp/teacher-update.jsp")
-//                        .forward(req, resp);
+
                 resp.sendRedirect(req.getContextPath() + "/school-app/students/update?id=" + id);
                 return;
             }
@@ -122,13 +121,15 @@ public class StudentUpdateController extends HttpServlet {
 
             StudentReadOnlyDTO readOnlyDTO = studentService.updateStudent(id, updateDTO);
             HttpSession session = req.getSession(false);
-            session.setAttribute("teacherInfo", readOnlyDTO);
+            session.setAttribute("studentInfo", readOnlyDTO);
             // PRG Pattern
-            resp.sendRedirect(req.getContextPath() + "/school-app/teacher-updated");
+            resp.sendRedirect(req.getContextPath() + "/school-app/student-updated");
 //            req.getRequestDispatcher("/WEB-INF/jsp/teacher-inserted.jsp")
 //                    .forward(req, resp);
         } catch (StudentDAOException | StudentAlreadyExistsException | StudentNotFoundException e) {
             errorMessage = e.getMessage();
+            System.err.println(errorMessage);
+            e.printStackTrace();
             req.setAttribute("errorMessage", errorMessage);
             req.getRequestDispatcher("/WEB-INF/jsp/student-insert.jsp")
                     .forward(req, resp);
